@@ -1,0 +1,96 @@
+output eDP-1 {
+   adaptive_sync off
+   pos 0,0
+   bg #ddd1c5 solid_color
+}
+
+input type:keyboard {
+   repeat_delay 200
+   repeat_rate 45
+}
+
+input type:pointer {
+   accel_profile "flat"
+   pointer_accel "0"
+}
+
+set $mod  Mod4
+set $alt  Mod1
+set $smod $mod+shift
+set $col  #202b31
+
+floating_modifier $mod normal
+
+bindsym $mod+Return    exec foot
+bindsym $mod+Backspace exec firefox
+bindsym $smod+s        exec grim -g "$(slurp)" \
+    $HOME/.media/images/$(date +%F-%H-%M-%S).jpg
+
+bindsym XF86AudioPlay        exec mpc toggle
+bindsym XF86AudioNext        exec mpc next
+bindsym XF86AudioPrev        exec mpc prev
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+
+bindsym $mod+1 workspace number 1
+bindsym $mod+2 workspace number 2
+bindsym $mod+3 workspace number 3
+bindsym $mod+4 workspace number 4
+bindsym $mod+5 workspace number 5
+bindsym $mod+6 workspace number 6
+bindsym $mod+7 workspace number 7
+bindsym $mod+8 workspace number 8
+bindsym $mod+9 workspace number 9
+bindsym $mod+0 workspace number 0
+
+bindsym $smod+1 move container to workspace number 1
+bindsym $smod+2 move container to workspace number 2
+bindsym $smod+3 move container to workspace number 3
+bindsym $smod+4 move container to workspace number 4
+bindsym $smod+5 move container to workspace number 5
+bindsym $smod+6 move container to workspace number 6
+bindsym $smod+7 move container to workspace number 7
+bindsym $smod+8 move container to workspace number 8
+bindsym $smod+9 move container to workspace number 9
+bindsym $smod+0 move container to workspace number 0
+
+bindsym $mod+f floating toggle
+
+bindsym $smod+q  kill
+bindsym $smod+r  reload
+bindsym $smod+l  exit
+bindsym $mod+v   splitv
+bindsym $mod+h   splith
+bindsym $mod+j   focus left
+bindsym $mod+k   focus right
+bindsym $mod+Tab focus left
+bindsym $alt+Tab focus right
+
+mode "resize" {
+    bindsym Up    resize shrink height 10px
+    bindsym Down  resize grow   height 10px
+    bindsym Left  resize shrink width  10px
+    bindsym Right resize grow   width  10px
+
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+bindsym $mod+r mode "resize"
+
+default_border    pixel 1
+hide_edge_borders both
+
+for_window [app_id=".*"] floating disable, titlebar hide
+
+client.focused          $col $col $col $col $col
+client.focused_inactive $col $col $col $col $col
+client.unfocused        $col $col $col $col $col
+client.urgent           $col $col $col $col $col
+
+seat seat0 xcursor_theme \
+    "capitaine-cursors/light" 30
+
+exec_always {
+    /usr/libexec/pipewire-launcher
+}

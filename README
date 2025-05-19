@@ -1,0 +1,12 @@
+Dotfiles
+________________________________________________________________________________
+
+A collection of configurations for my Alpine Linux installation, running on a
+Framework 13 AMD 7040 series laptop. Includes configurations for Sway, Neovim,
+Foot, BusyBox Ash, and likely some other environmental bloat like shell scripts.
+
+Warnings
+________________________________________________________________________________
+
+The Neovim configuration specifically assumes you are building from the Nightly
+release and therefore certain features may not work with the stable builds.
