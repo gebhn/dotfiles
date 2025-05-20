@@ -22,6 +22,10 @@ pb() {
 gs() {
     git status;
 }
+gd() {
+    git diff -u "$@" | sed \
+      "s/^-/$(printf "\x1b")[31m-/;s/^+/$(printf "\x1b")[32m+/;s/^@/$(printf "\x1b")[34m@/;s/$/$(printf "\x1b")[0m/"
+}
 ..() {
     cd ../;
 }
