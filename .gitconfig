@@ -1,6 +1,6 @@
 [user]
-    email =      gebhn@proton.me
-    name =       Nicholas Gebhart
+    email      = gebhn@proton.me
+    name       = Nicholas Gebhart
     signingkey = ~/.ssh/id_ed25519.pub
 
 [init]

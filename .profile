@@ -1,5 +1,5 @@
-export ENV=~/.ashrc
 export PATH
+export ENV=~/.ashrc
 
 if [ ! "$XDG_RUNTIME_DIR" ]; then
     export XDG_RUNTIME_DIR="/tmp/$(id -u)/runtime"
