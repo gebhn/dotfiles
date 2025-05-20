@@ -18,13 +18,35 @@ vim.api.nvim_create_autocmd({ 'InsertEnter', 'WinLeave' }, {
     end,
 })
 
+vim.api.nvim_create_autocmd({ 'FileType' }, {
+    pattern = { 'gitcommit' },
+    callback = function()
+        vim.opt_local.textwidth = 50
+        vim.opt_local.formatoptions:append 'tq'
+    end,
+})
+
+vim.api.nvim_create_autocmd({ 'FileType' }, {
+    pattern = { 'text', 'markdown' },
+    callback = function()
+        vim.opt_local.formatoptions:append 'tq'
+    end,
+})
+
 vim.api.nvim_create_autocmd('FileType', {
-    pattern = { 'gitcommit', 'markdown' },
+    pattern = { 'text', 'gitcommit', 'markdown' },
     callback = function()
         vim.opt_local.wrap = true
         vim.opt_local.spell = true
         vim.keymap.set('n', 'fne', ']s', { buffer = true })
         vim.keymap.set('n', 'fpe', '[s', { buffer = true })
         vim.keymap.set('n', '<leader>qf', 'z=', { buffer = true })
+    end,
+})
+
+vim.api.nvim_create_autocmd({ 'FileType' }, {
+    pattern = { 'c', 'cpp', 'lua', 'go' },
+    callback = function()
+        vim.opt_local.formatoptions:append 'cq'
     end,
 })

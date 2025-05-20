@@ -26,6 +26,7 @@ vim.opt.relativenumber = false
 vim.opt.signcolumn = 'number'
 vim.opt.cursorline = true
 vim.opt.wrap = false
+vim.opt.textwidth = 80
 
 vim.opt.switchbuf = 'newtab'
 vim.opt.splitbelow = true
