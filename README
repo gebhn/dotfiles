@@ -3,9 +3,28 @@ ________________________________________________________________________________
 
 A collection of configurations for my Alpine Linux installation, running on a
 Framework 13 AMD 7040 series laptop. Includes configurations for Sway, Neovim,
-Foot, BusyBox Ash, and likely some other environmental bloat like shell scripts.
+Foot, Ash, and likely some other environmental bloat like shell scripts.
 
-Warnings
+[000] Index
+________________________________________________________________________________
+
+* Dependencies ........................................................... [001]
+* Warnings ............................................................... [002]
+
+[001] Dependencies
+________________________________________________________________________________
+
+Naturally as these are dotfiles there are several programs which are required in
+order to utilize their configuration. While the inclusion of this list is
+probably self-evident to anyone who is perusing dotfile repos on GitHub, they'll
+still be listed here.
+
+* Ash    [https://git.busybox.net/busybox]
+* Foot   [https://codeberg.org/dnkl/foot]
+* Neovim [https://github.com/neovim/neovim]
+* Sway   [https://github.com/swaywm/sway]
+
+[002] Warnings
 ________________________________________________________________________________
 
 The Neovim configuration specifically assumes you are building from the Nightly
