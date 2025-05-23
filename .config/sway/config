@@ -90,8 +90,3 @@ client.urgent           $col $col $col $col $col
 
 seat seat0 xcursor_theme \
     "capitaine-cursors/light" 30
-
-exec_always {
-    /usr/libexec/pipewire-launcher
-    # /usr/bin/dockerd-rootless
-}
