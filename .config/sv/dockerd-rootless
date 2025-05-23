@@ -1,0 +1,10 @@
+#!/sbin/openrc-run
+
+description="Docker Daemon (Rootless)"
+
+command="/usr/bin/dockerd-rootless"
+
+supervisor=supervise-daemon
+error_logger="logger -t '${RC_SVCNAME}' -p daemon.error"
+
+export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/docker.sock

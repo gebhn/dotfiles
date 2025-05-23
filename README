@@ -9,7 +9,8 @@ Foot, Ash, and likely some other environmental bloat like shell scripts.
 ________________________________________________________________________________
 
 * Dependencies ........................................................... [001]
-* Warnings ............................................................... [002]
+* Services ............................................................... [002]
+* Warnings ............................................................... [003]
 
 [001] Dependencies
 ________________________________________________________________________________
@@ -24,7 +25,34 @@ still be listed here.
 * Neovim [https://github.com/neovim/neovim]
 * Sway   [https://github.com/swaywm/sway]
 
-[002] Warnings
+[002] Services
+________________________________________________________________________________
+
+From the Gentoo wiki:
+
++------------------------------------------------------------------------------+
+|                                                                              |
+|   User service are services that run as the specific user they belong to.    |
+|   Starting with version 0.60, OpenRC has support for user services.          |
+|                                                                              |
++------------------------------------------------------------------------------+
+
+To configure user services, you must first create the default runlevel service
+which enables lingering services for the target user. Afterwards, copy the
+contents of the .config/sv/ directory to /etc/user/init.d/ and enable the
+services which you wish to use.
+
++------------------------------------------------------------------------------+
+|                                                                              |
+|   $ ln -s /etc/init.d/user /etc/init.d/user.$(whoami)                        |
+|   $ rc-update add user.$(whoami)                                             |
+|                                                                              |
+|   $ rc-update --user add dockerd-rootless                                    |
+|   $ rc-service --user dockerd-rootless start                                 |
+|                                                                              |
++------------------------------------------------------------------------------+
+
+[003] Warnings
 ________________________________________________________________________________
 
 The Neovim configuration specifically assumes you are building from the Nightly
