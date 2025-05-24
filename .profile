@@ -1,4 +1,3 @@
-export PATH
 export ENV=~/.ashrc
 
 if [ ! "$XDG_RUNTIME_DIR" ]; then
@@ -7,8 +6,9 @@ fi
 
 if [ ! "$GOPATH" ]; then
     export GOPATH="/home/$(whoami)/.local/go"
+    export GOBIN="$GOPATH/bin"
+    export PATH=$PATH:$GOPATH/bin
     printf "GOPATH=$GOPATH" > "$HOME/.config/go/env"
-    PATH=$PATH:$GOPATH
 fi
 
 mkdir -pm 0700 "$XDG_RUNTIME_DIR"
