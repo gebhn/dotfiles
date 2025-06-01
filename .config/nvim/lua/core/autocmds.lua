@@ -27,14 +27,14 @@ vim.api.nvim_create_autocmd({ 'FileType' }, {
 })
 
 vim.api.nvim_create_autocmd({ 'FileType' }, {
-    pattern = { 'text', 'markdown' },
+    pattern = { 'text' },
     callback = function()
         vim.opt_local.formatoptions:append 'tq'
     end,
 })
 
 vim.api.nvim_create_autocmd('FileType', {
-    pattern = { 'text', 'gitcommit', 'markdown' },
+    pattern = { 'text', 'gitcommit' },
     callback = function()
         vim.opt_local.wrap = true
         vim.opt_local.spell = true

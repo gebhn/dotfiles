@@ -11,6 +11,8 @@
 !.config/
 !.config/foot/
 !.config/foot/**
+!.config/mako/
+!.config/mako/**
 !.config/nvim/
 !.config/nvim/**
 !.config/sway/

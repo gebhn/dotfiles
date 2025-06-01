@@ -14,15 +14,21 @@ mini.add {
 mini.later(function()
     local plugin = require 'nvim-treesitter.configs'
     plugin.setup {
+        auto_install = true,
+        sync_install = true,
+        ignore_install = {},
         ensure_installed = {
             'c',
             'bash',
             'go',
             'lua',
+            'javascript',
+            'typescript',
             'vimdoc',
             'markdown',
             'zig',
         },
         highlight = { enable = true },
+        modules = {},
     }
 end)

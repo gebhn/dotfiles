@@ -10,6 +10,8 @@ mini.later(function()
             go = { 'gci', 'goimports', 'staticcheck', 'gofumpt' },
             lua = { 'stylua' },
             zig = { 'zigfmt' },
+            javascript = { 'prettierd', 'eslintd' },
+            typescript = { 'prettierd', 'eslintd' },
             ['_'] = { 'trim_whitespace' },
         },
     }

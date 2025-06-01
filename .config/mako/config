@@ -1,0 +1,9 @@
+font=Iosevka Term:size=13:weight=medium
+format=<b>%a\n\n</b>%s\n%b
+border-size=1
+border-color=#202b31
+text-color=#202b31
+background-color=#f0edec
+
+sort=-time
+default-timeout=5000

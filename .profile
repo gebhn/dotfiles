@@ -7,13 +7,18 @@ fi
 if [ ! "$GOPATH" ]; then
     export GOPATH="/home/$(whoami)/.local/go"
     export GOBIN="$GOPATH/bin"
-    export PATH=$PATH:$GOPATH/bin
-    printf "GOPATH=$GOPATH" > "$HOME/.config/go/env"
+    export PATH=$PATH:$GOBIN
 fi
 
-mkdir -pm 0700 "$XDG_RUNTIME_DIR"
-mkdir -pm 0700 "$GOPATH"
-mkdir -pm 0700 "$HOME/.config/go"
+if command -v docker >/dev/null 2>&1; then
+    export DOCKER_HOST="unix://$XDG_RUNTIME_DIR/docker.sock"
+fi
+
+for dir in "$XDG_RUNTIME_DIR" "$GOPATH" "$HOME/.config/go"; do
+    mkdir -pm 0700 "$dir"
+done
+
+printf "GOPATH=$GOPATH" > "$HOME/.config/go/env"
 
 if [ ! "$WAYLAND_DISPLAY" ] && [ "$(tty)" = /dev/tty1 ]; then
     export XDG_SESSION_TYPE=wayland

@@ -2,11 +2,9 @@
 
 export PS1='> '
 export EDITOR=nvim
-export BROWSER=firefox.desktop
 export CFLAGS='-O3 -pipe -march=native'
 export CXXFLAGS='$CFLAGS'
 export MAKEFLAGS='-j$(nproc)'
-export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/docker.sock
 
 mksh() {
     printf '#!/bin/sh\n' > "$1" && chmod +x "$1";

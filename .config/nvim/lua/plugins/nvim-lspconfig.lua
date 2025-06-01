@@ -56,6 +56,10 @@ mini.now(function()
         },
     }
 
+    lspconfig.vtsls.setup {
+        on_attach = on_attach,
+    }
+
     lspconfig.zls.setup {
         on_attach = on_attach,
     }
