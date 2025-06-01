@@ -2,8 +2,8 @@ Dotfiles
 ________________________________________________________________________________
 
 A collection of configurations for my Alpine Linux installation, running on a
-Framework 13 AMD 7040 series laptop. Includes configurations for Sway, Neovim,
-Foot, Ash, and likely some other environmental bloat like shell scripts.
+Framework 13 AMD 7040 series laptop. Includes configurations for Sway, Mako,
+Neovim, Foot, Ash, and likely some other environmental bloat like shell scripts.
 
 [000] Index
 ________________________________________________________________________________
@@ -22,6 +22,7 @@ still be listed here.
 
 * Ash    [https://git.busybox.net/busybox]
 * Foot   [https://codeberg.org/dnkl/foot]
+* Mako   [https://github.com/emersion/mako]
 * Neovim [https://github.com/neovim/neovim]
 * Sway   [https://github.com/swaywm/sway]
 
