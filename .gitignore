@@ -23,3 +23,12 @@
 !.media/
 !.media/screenshots/
 !.media/screenshots/**
+
+!.mozilla/
+!.mozilla/firefox/
+!.mozilla/firefox/*
+!.mozilla/firefox/*/chrome/
+!.mozilla/firefox/*/chrome/*
+
+.mozilla/firefox/installs.ini
+.mozilla/firefox/profiles.ini
