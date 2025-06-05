@@ -1,0 +1,12 @@
+.titlebar, .titlebar .background,
+decoration, window, window.background {
+  border-radius: 0;
+}
+
+decoration, decoration:backdrop {
+  box-shadow: none;
+}
+
+* {
+  border-radius: 0px !important;
+}

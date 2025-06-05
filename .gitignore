@@ -11,6 +11,8 @@
 !.config/
 !.config/foot/
 !.config/foot/**
+!.config/gtk-3.0/
+!.config/gtk-3.0/**
 !.config/mako/
 !.config/mako/**
 !.config/nvim/
