@@ -165,3 +165,8 @@ input:focus {
     box-shadow: none !important;
     drop-shadow: none !important;
 }
+
+#urlbar[breakout][breakout-extend]
+  > .urlbar-input-container {
+      /* TODO @gebhn: the breakout looks bad */
+}
