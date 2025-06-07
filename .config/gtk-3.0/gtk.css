@@ -1,6 +1,7 @@
 .titlebar, .titlebar .background,
 decoration, window, window.background {
   border-radius: 0;
+  border: 1px solid black;
 }
 
 decoration, decoration:backdrop {
