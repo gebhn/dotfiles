@@ -1,7 +1,4 @@
-local mini = require 'mini.deps'
+vim.pack.add { 'https://github.com/williamboman/mason.nvim' }
 
-mini.add { source = 'williamboman/mason.nvim' }
-mini.now(function()
-    local plugin = require 'mason'
-    plugin.setup {}
-end)
+local plugin = require 'mason'
+plugin.setup { }

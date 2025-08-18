@@ -2,11 +2,11 @@ vim.g.mapleader = '\\'
 
 vim.o.filetype = 'on'
 vim.o.syntax = 'on'
+vim.o.winborder = 'single'
 
 vim.opt.scrolloff = 3
 vim.opt.title = true
 vim.opt.titlestring = '%f'
-vim.opt.clipboard:append 'unnamedplus'
 vim.opt.swapfile = false
 vim.opt.undofile = true
 vim.opt.cmdheight = 0
