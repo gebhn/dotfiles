@@ -7,8 +7,10 @@ plugin.setup {
     formatters_by_ft = {
         go = { 'goimports', 'gofumpt' },
         lua = { 'stylua' },
-        javascript = { 'prettierd', 'eslint_d' },
-        typescript = { 'prettierd', 'eslint_d' },
+        javascript = { 'biome' },
+        typescript = { 'biome' },
+        javascriptreact = { 'biome' },
+        typescriptreact = { 'biome' },
         ['_'] = { 'trim_whitespace' },
     },
 }
