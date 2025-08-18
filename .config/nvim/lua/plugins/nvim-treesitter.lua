@@ -18,7 +18,6 @@ plugin.setup {
         'typescript',
         'vimdoc',
         'markdown',
-        'zig',
     },
     highlight = { enable = true, language_tree = true },
     textobjects = {
@@ -38,7 +37,6 @@ plugin.setup {
                 ['ic'] = '@comment.inner',
                 ['aa'] = '@parameter.outer',
                 ['ia'] = '@parameter.inner',
-                ['is'] = { query = '@scope', query_group = 'locals' },
             },
         },
     },

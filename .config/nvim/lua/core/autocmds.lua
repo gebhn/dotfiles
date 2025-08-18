@@ -1,3 +1,22 @@
+vim.api.nvim_create_autocmd('LspAttach', {
+    callback = function(args)
+        local client = vim.lsp.get_client_by_id(args.data.client_id)
+        if not client or not client:supports_method 'textDocument/diagnostic' then
+            return
+        end
+
+        vim.diagnostic.config {
+            update_in_insert = true,
+        }
+        vim.api.nvim_create_autocmd('CursorHold', {
+            pattern = { '<buffer>' },
+            callback = function()
+                vim.diagnostic.open_float { focusable = false, focus = false }
+            end,
+        })
+    end,
+})
+
 vim.api.nvim_create_autocmd({ 'InsertLeave', 'WinEnter' }, {
     callback = function()
         local ok, cl = pcall(vim.api.nvim_win_get_var, 0, 'auto-cursorline')
