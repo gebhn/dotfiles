@@ -1,9 +1,9 @@
 for _, cfg in ipairs {
+    'blink-cmp',
     'color',
     'mason',
     'mini',
     'nvim-conform',
-    'nvim-cmp',
     'nvim-treesitter',
 } do
     require('plugins.' .. cfg)
