@@ -11,6 +11,7 @@ plugin.setup {
         typescript = { 'biome' },
         javascriptreact = { 'biome' },
         typescriptreact = { 'biome' },
+        sh = { 'shellcheck' },
         ['_'] = { 'trim_whitespace' },
     },
 }

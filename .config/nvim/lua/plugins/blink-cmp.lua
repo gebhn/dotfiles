@@ -1,4 +1,4 @@
-vim.pack.add { 'https://github.com/Saghen/blink.cmp' }
+vim.pack.add { { src = 'https://github.com/Saghen/blink.cmp', version = vim.version.range '^1' } }
 
 local plugin = require 'blink.cmp'
 
@@ -10,8 +10,5 @@ plugin.setup {
     signature = { enabled = true },
     keymap = {
         preset = 'default',
-        -- ['<Tab>'] = { 'select_next', 'fallback' },
-        -- ['<S-Tab>'] = { 'select_prev', 'fallback' },
-        -- ['<CR>'] = { 'select_and_accept', 'fallback' },
     },
 }

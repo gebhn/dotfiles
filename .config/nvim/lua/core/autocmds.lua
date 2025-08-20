@@ -1,7 +1,7 @@
 local augroup = vim.api.nvim_create_augroup('config-autocmds', { clear = true })
 
 vim.api.nvim_create_autocmd({ 'InsertLeave', 'WinEnter' }, {
-    augroup = augroup,
+    group = augroup,
     callback = function()
         local ok, cl = pcall(vim.api.nvim_win_get_var, 0, 'auto-cursorline')
         if ok and cl then
@@ -12,7 +12,7 @@ vim.api.nvim_create_autocmd({ 'InsertLeave', 'WinEnter' }, {
 })
 
 vim.api.nvim_create_autocmd({ 'InsertEnter', 'WinLeave' }, {
-    augroup = augroup,
+    group = augroup,
     callback = function()
         local cl = vim.wo.cursorline
         if cl then
@@ -23,7 +23,7 @@ vim.api.nvim_create_autocmd({ 'InsertEnter', 'WinLeave' }, {
 })
 
 vim.api.nvim_create_autocmd({ 'FileType' }, {
-    augroup = augroup,
+    group = augroup,
     pattern = { 'gitcommit' },
     callback = function()
         vim.opt_local.textwidth = 50
@@ -31,7 +31,7 @@ vim.api.nvim_create_autocmd({ 'FileType' }, {
 })
 
 vim.api.nvim_create_autocmd({ 'FileType' }, {
-    augroup = augroup,
+    group = augroup,
     pattern = { 'text', 'gitcommit' },
     callback = function(args)
         vim.opt_local.formatoptions:append 'tq'
@@ -45,14 +45,14 @@ vim.api.nvim_create_autocmd({ 'FileType' }, {
 })
 
 vim.api.nvim_create_autocmd({ 'FileType' }, {
-    augroup = augroup,
+    group = augroup,
     pattern = { 'c', 'cpp', 'lua', 'go', 'typescript', 'javascript' },
     callback = function()
         vim.opt_local.formatoptions:append 'cq'
     end,
 })
 vim.api.nvim_create_autocmd({ 'InsertLeave', 'WinEnter' }, {
-    augroup = augroup,
+    group = augroup,
     callback = function()
         local ok, cl = pcall(vim.api.nvim_win_get_var, 0, 'auto-cursorline')
         if ok and cl then
@@ -63,7 +63,7 @@ vim.api.nvim_create_autocmd({ 'InsertLeave', 'WinEnter' }, {
 })
 
 vim.api.nvim_create_autocmd({ 'InsertEnter', 'WinLeave' }, {
-    augroup = augroup,
+    group = augroup,
     callback = function()
         local cl = vim.wo.cursorline
         if cl then
@@ -74,7 +74,7 @@ vim.api.nvim_create_autocmd({ 'InsertEnter', 'WinLeave' }, {
 })
 
 vim.api.nvim_create_autocmd({ 'FileType' }, {
-    augroup = augroup,
+    group = augroup,
     pattern = { 'gitcommit' },
     callback = function()
         vim.opt_local.textwidth = 50
@@ -82,7 +82,7 @@ vim.api.nvim_create_autocmd({ 'FileType' }, {
 })
 
 vim.api.nvim_create_autocmd({ 'FileType' }, {
-    augroup = augroup,
+    group = augroup,
     pattern = { 'text', 'gitcommit' },
     callback = function(args)
         vim.opt_local.formatoptions:append 'tq'
@@ -96,7 +96,7 @@ vim.api.nvim_create_autocmd({ 'FileType' }, {
 })
 
 vim.api.nvim_create_autocmd({ 'FileType' }, {
-    augroup = augroup,
+    group = augroup,
     pattern = { 'c', 'cpp', 'lua', 'go', 'typescript', 'javascript' },
     callback = function()
         vim.opt_local.formatoptions:append 'cq'
