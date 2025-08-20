@@ -7,10 +7,11 @@ plugin.setup {
     completion = {
         documentation = { auto_show = true, auto_show_delay_ms = 0 },
     },
+    signature = { enabled = true },
     keymap = {
         preset = 'default',
-        ['<Tab>'] = { 'select_next', 'fallback' },
-        ['<S-Tab>'] = { 'select_prev', 'fallback' },
-        ['<CR>'] = { 'select_and_accept', 'fallback' },
+        -- ['<Tab>'] = { 'select_next', 'fallback' },
+        -- ['<S-Tab>'] = { 'select_prev', 'fallback' },
+        -- ['<CR>'] = { 'select_and_accept', 'fallback' },
     },
 }

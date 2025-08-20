@@ -1,39 +1,26 @@
-export PATH
 export ENV=~/.ashrc
 
-exists() {
-    command -v "$1" > /dev/null
-}
-
-if [ ! "$XDG_RUNTIME_DIR" ]; then
+[ -z "$XDG_RUNTIME_DIR" ] && {
     export XDG_RUNTIME_DIR="/tmp/$(id -u)/runtime"
-fi
-
-exists go && {
-    if [ ! "$GOPATH" ]; then
-        export GOPATH="$HOME/.local/go"
-    fi
-
-    if [ ! "$GOPATH" ]; then
-        export GOBIN="$GOPATH/bin"
-    fi
-
-    PATH=$PATH:$GOBIN
-    printf "GOPATH=$GOPATH" > "$HOME/.config/go/env"
 }
 
-exists docker && {
-    export DOCKER_HOST="unix://$XDG_RUNTIME_DIR/docker.sock"
+[ -z "$GOPATH" ] && {
+    export GOPATH="$HOME/.local/go"
+    echo "GOPATH=$GOPATH" >> $HOME/.local/go/env
 }
 
-exists turso && {
-    PATH="$PATH:$HOME/.turso"
+[ -z "$GOBIN" ] && {
+    export GOBIN="$GOPATH/bin"
+    echo "GOBIN=$GOBIN" >> $HOME/.local/go/env
 }
 
-for dir in "$XDG_RUNTIME_DIR" "$GOPATH" "$HOME/.config/go"; do
+export PATH=$PATH:$HOME/.turso
+export PATH=$PATH:$HOME/.cargo/bin
+export PATH=$PATH:$HOME/.local/go/bin
+
+for dir in "$XDG_RUNTIME_DIR" "$GOPATH"; do
     mkdir -pm 0700 "$dir"
 done
-
 
 if [ ! "$WAYLAND_DISPLAY" ] && [ "$(tty)" = /dev/tty1 ]; then
     export XDG_SESSION_TYPE=wayland
@@ -43,4 +30,3 @@ if [ ! "$WAYLAND_DISPLAY" ] && [ "$(tty)" = /dev/tty1 ]; then
 
     exec dbus-run-session sway
 fi
-

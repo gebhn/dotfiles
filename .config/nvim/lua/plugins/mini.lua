@@ -4,6 +4,7 @@ vim.pack.add {
     'https://github.com/echasnovski/mini.pairs',
     'https://github.com/echasnovski/mini.surround',
     'https://github.com/echasnovski/mini.pick',
+    'https://github.com/echasnovski/mini.icons',
 }
 
 local surround = require 'mini.surround'
@@ -28,21 +29,14 @@ pick.setup {
     mappings = {
         move_down = '<C-j>',
         move_up = '<C-k>',
+        refine = '<C-p>',
     },
 }
 
-local git = function()
+vim.keymap.set('n', 'fae', extra.pickers.diagnostic, { noremap = true })
+vim.keymap.set('n', '<C-p>', function()
     pick.builtin.files { tool = 'git' }
-end
-
-local rg = function()
+end, { noremap = true })
+vim.keymap.set('n', '<C-g>', function()
     pick.builtin.grep_live { tool = 'rg' }
-end
-
-local dg = function()
-    extra.pickers.diagnostic()
-end
-
-vim.keymap.set('n', '<C-p>', git, { noremap = true })
-vim.keymap.set('n', '<C-g>', rg, { noremap = true })
-vim.keymap.set('n', 'fae', dg, { noremap = true })
+end, { noremap = true })
