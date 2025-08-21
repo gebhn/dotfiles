@@ -47,29 +47,3 @@ vim.api.nvim_create_autocmd({ 'FileType' }, {
     pattern = { 'c', 'cpp', 'lua', 'go', 'typescript', 'javascript' },
     callback = function() vim.opt_local.formatoptions:append 'cq' end,
 })
-
-vim.api.nvim_create_autocmd({ 'FileType' }, {
-    group = augroup,
-    pattern = { 'gitcommit' },
-    callback = function() vim.opt_local.textwidth = 50 end,
-})
-
-vim.api.nvim_create_autocmd({ 'FileType' }, {
-    group = augroup,
-    pattern = { 'text', 'gitcommit' },
-    callback = function(args)
-        vim.opt_local.formatoptions:append 'tq'
-        vim.opt_local.wrap = true
-        vim.opt_local.spell = true
-
-        vim.keymap.set('n', 'fne', ']s', { buffer = args.buf })
-        vim.keymap.set('n', 'fpe', '[s', { buffer = args.buf })
-        vim.keymap.set('n', '<leader>qf', 'z=', { buffer = args.buf })
-    end,
-})
-
-vim.api.nvim_create_autocmd({ 'FileType' }, {
-    group = augroup,
-    pattern = { 'c', 'cpp', 'lua', 'go', 'typescript', 'javascript' },
-    callback = function() vim.opt_local.formatoptions:append 'cq' end,
-})
