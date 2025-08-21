@@ -14,3 +14,12 @@
 
 [url "ssh://git@github.com/"]
     insteadOf = gh:
+
+[diff]
+    tool = nvimdiff
+
+[difftool "nvimdiff"]
+    cmd = nvim -d $LOCAL $REMOTE
+
+[merge]
+    tool = nvimdiff

@@ -1,5 +1,4 @@
 for _, cfg in ipairs {
-    'blink-cmp',
     'color',
     'mason',
     'mini',

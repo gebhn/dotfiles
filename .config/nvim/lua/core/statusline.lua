@@ -50,7 +50,6 @@ Statusline = {
         local mode_color = colors[current_mode] or colors.default
         local mode_name = string.format(' %s ', current_mode or ''):lower()
         local filetype = string.format(' %s ', vim.bo.filetype):lower()
-        local lineinfo = vim.bo.filetype == 'alpha' and '' or ' %P %#Normal# %l:%c '
 
         return '%#Statusline#'
             .. mode_color

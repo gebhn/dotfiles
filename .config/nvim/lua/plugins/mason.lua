@@ -6,12 +6,17 @@ vim.pack.add {
 local plugin = require 'mason'
 plugin.setup {}
 
-local has_go = function()
-    return vim.fn.executable 'go' == 1
-end
+local has = function(cmd) return vim.fn.executable(cmd) == 1 end
 
-local has_rust = function()
-    return vim.fn.executable 'cargo' == 1
+local has_go = function() return has 'go' end
+
+local has_npm = function() return has 'npm' end
+
+local has_glibc = function()
+    if has 'ldd' then
+        local ldd_output = vim.fn.system 'ldd --version 2>&1'
+        return not ldd_output:find 'musl'
+    end
 end
 
 local installer = require 'mason-tool-installer'
@@ -20,11 +25,12 @@ installer.setup {
         { 'lua-language-server' },
         { 'stylua' },
         { 'shellcheck' },
-        { 'clang-format' },
         { 'gopls', condition = has_go },
         { 'gofumpt', condition = has_go },
         { 'goimports', condition = has_go },
         { 'staticcheck', condition = has_go },
-        { 'rust-analyzer', condition = has_rust },
+        { 'clangd', condition = has_glibc },
+        { 'clang-format', condition = has_glibc },
+        { 'bash-language-server', condition = has_npm },
     },
 }

@@ -7,19 +7,18 @@ local plugin = require 'nvim-treesitter.configs'
 
 plugin.setup {
     auto_install = true,
-    sync_install = true,
+    sync_install = false,
     ignore_install = {},
     ensure_installed = {
         'c',
-        'bash',
         'go',
         'lua',
-        'javascript',
-        'typescript',
+        'bash',
         'vimdoc',
         'markdown',
     },
-    highlight = { enable = true, language_tree = true },
+    modules = {},
+    highlight = { enable = true },
     textobjects = {
         select = {
             enable = true,
@@ -44,8 +43,6 @@ plugin.setup {
 
 vim.api.nvim_create_autocmd('PackChanged', {
     callback = function(args)
-        if args.data.spec.name == 'nvim-treesitter' and args.data.kind == 'update' then
-            vim.cmd 'TSUpdate'
-        end
+        if args.data.spec.name == 'nvim-treesitter' and args.data.kind == 'update' then vim.cmd 'TSUpdate' end
     end,
 })
