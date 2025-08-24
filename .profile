@@ -6,12 +6,12 @@ export ENV=~/.ashrc
 
 [ -z "$GOPATH" ] && {
     export GOPATH="$HOME/.local/go"
-    echo "GOPATH=$GOPATH" >> $HOME/.local/go/env
+    echo "GOPATH=$GOPATH" >> "$HOME"/.local/go/env
 }
 
 [ -z "$GOBIN" ] && {
     export GOBIN="$GOPATH/bin"
-    echo "GOBIN=$GOBIN" >> $HOME/.local/go/env
+    echo "GOBIN=$GOBIN" >> "$HOME"/.local/go/env
 }
 
 export PATH=$PATH:$HOME/.turso

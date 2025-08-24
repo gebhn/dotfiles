@@ -1,9 +1,11 @@
 for _, cfg in ipairs {
+    'dap',
     'color',
     'mason',
     'mini',
-    'nvim-conform',
-    'nvim-treesitter',
+    'blink',
+    'conform',
+    'treesitter',
 } do
     require('plugins.' .. cfg)
 end

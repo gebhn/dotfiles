@@ -3,7 +3,7 @@ vim.pack.add { { src = 'https://github.com/Saghen/blink.cmp', version = vim.vers
 local plugin = require 'blink.cmp'
 
 plugin.setup {
-    build = 'cargo build --release',
+    -- build = 'cargo build --release',
     completion = {
         documentation = { auto_show = true, auto_show_delay_ms = 0 },
     },

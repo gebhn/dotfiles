@@ -1,17 +1,19 @@
 #!/bin/sh
 
-export PS1='> '
+# shellcheck disable=SC3033,SC2288
+
+export PS1="> "
 export EDITOR=nvim
-export CFLAGS='-O3 -pipe -march=native'
-export CXXFLAGS='$CFLAGS'
-export MAKEFLAGS='-j$(nproc)'
+export CFLAGS="-O3 -pipe -march=native"
+export CXXFLAGS="$CFLAGS"
+export MAKEFLAGS='-j12'
 export DOCKER_HOST="unix://$XDG_RUNTIME_DIR/docker.sock"
 
+runt() {
+    tmux send-keys -t "$1" "$2" C-m
+}
 mksh() {
     printf '#!/bin/sh\n' > "$1" && chmod +x "$1";
-}
-mkcd() {
-    mkdir -p "$@" && cd "$_";
 }
 oxo() {
     curl -F"file=@$1" https://0x0.st;

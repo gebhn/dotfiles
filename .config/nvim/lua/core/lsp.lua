@@ -14,7 +14,13 @@ vim.api.nvim_create_autocmd('LspAttach', {
             callback = function() vim.diagnostic.open_float { focusable = false, focus = false } end,
         })
 
-        local map = function(k, f) vim.keymap.set('n', k, f, { buffer = args.buf, silent = true, noremap = true }) end
+        local map = function(key, fn)
+            vim.keymap.set('n', key, fn, {
+                buffer = args.buf,
+                silent = true,
+                noremap = true,
+            })
+        end
 
         map('gd', vim.lsp.buf.definition)
         map('gD', vim.lsp.buf.declaration)
@@ -39,28 +45,5 @@ vim.api.nvim_create_autocmd('LspAttach', {
         --         convert = function() return { abbr = '', menu = '' } end,
         --     })
         -- end
-
-        if client:supports_method(vim.lsp.protocol.Methods.textDocument_documentHighlight, args.buf) then
-            local augroup = vim.api.nvim_create_augroup('lsp-highlight', { clear = false })
-
-            vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
-                buffer = args.buf,
-                group = augroup,
-                callback = vim.lsp.buf.document_highlight,
-            })
-            vim.api.nvim_create_autocmd({ 'CursorMoved', 'CursorMovedI' }, {
-                buffer = args.buf,
-                group = augroup,
-                callback = vim.lsp.buf.clear_references,
-            })
-
-            vim.api.nvim_create_autocmd('LspDetach', {
-                group = vim.api.nvim_create_augroup('lsp-lowlight', { clear = true }),
-                callback = function(ev)
-                    vim.lsp.buf.clear_references()
-                    vim.api.nvim_clear_autocmds { group = augroup, buffer = ev.buf }
-                end,
-            })
-        end
     end,
 })

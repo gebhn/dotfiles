@@ -29,6 +29,13 @@ pick.setup {
         move_down = '<C-j>',
         move_up = '<C-k>',
         refine = '<C-p>',
+        choose_all = {
+            char = '<C-q>',
+            func = function()
+                local mappings = pick.get_picker_opts().mappings
+                vim.api.nvim_input(mappings.mark_all .. mappings.choose_marked)
+            end,
+        },
     },
 }
 
