@@ -16,15 +16,11 @@ local extra = require 'mini.extra'
 extra.setup {}
 
 local comment = require 'mini.comment'
-comment.setup {
-    mappings = {
-        comment = 'gc',
-        comment_line = 'gcc',
-    },
-}
+comment.setup {}
 
 local pick = require 'mini.pick'
 pick.setup {
+    options = { content_from_bottom = true },
     mappings = {
         move_down = '<C-j>',
         move_up = '<C-k>',
@@ -36,6 +32,17 @@ pick.setup {
                 vim.api.nvim_input(mappings.mark_all .. mappings.choose_marked)
             end,
         },
+    },
+    window = {
+        config = function()
+            return {
+                anchor = 'NW',
+                row = vim.o.lines - math.floor(vim.o.lines * 0.3),
+                col = 0,
+                height = math.floor(vim.o.lines * 0.3),
+                width = vim.o.columns,
+            }
+        end,
     },
 }
 

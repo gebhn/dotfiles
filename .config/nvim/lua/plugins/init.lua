@@ -1,5 +1,4 @@
 for _, cfg in ipairs {
-    'dap',
     'color',
     'mason',
     'mini',
