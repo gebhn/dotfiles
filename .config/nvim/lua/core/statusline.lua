@@ -38,9 +38,9 @@ local format_diagnostics = function(_, value)
 end
 
 local get_lsp_diagnostics = function()
-    local diagnostics = vim.iter(diagnostics_info):map(format_diagnostics):fold('', function(acc, cv)
-        return acc .. cv
-    end)
+    local diagnostics = vim.iter(diagnostics_info)
+        :map(format_diagnostics)
+        :fold('', function(acc, cv) return acc .. cv end)
     return diagnostics .. '%#Normal#'
 end
 
@@ -62,20 +62,14 @@ Statusline = {
             .. '%=%#StatusLineExtra#'
             .. filetype
     end,
-    inactive = function()
-        return '%#Normal#' .. ' %F'
-    end,
+    inactive = function() return '%#Statusline#' .. ' %F' end,
 }
 
 vim.api.nvim_create_autocmd({ 'WinEnter', 'BufEnter' }, {
     pattern = { '*' },
-    callback = function()
-        vim.wo.statusline = '%!v:lua.Statusline.active()'
-    end,
+    callback = function() vim.wo.statusline = '%!v:lua.Statusline.active()' end,
 })
 vim.api.nvim_create_autocmd({ 'WinLeave', 'BufLeave' }, {
     pattern = { '*' },
-    callback = function()
-        vim.wo.statusline = '%!v:lua.Statusline.inactive()'
-    end,
+    callback = function() vim.wo.statusline = '%!v:lua.Statusline.inactive()' end,
 })

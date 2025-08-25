@@ -2,7 +2,7 @@ for _, cfg in ipairs {
     'color',
     'mason',
     'mini',
-    'blink',
+    -- 'blink',
     'conform',
     'treesitter',
 } do

@@ -21,6 +21,8 @@
 !.config/sway/**
 !.config/sv/
 !.config/sv/**
+!.config/tmux/
+!.config/tmux/**
 
 !.media/
 !.media/screenshots/

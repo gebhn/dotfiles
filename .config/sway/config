@@ -21,7 +21,7 @@ set $col  #202b31
 
 floating_modifier $mod normal
 
-bindsym $mod+Return    exec foot
+bindsym $mod+Return    exec foot tmux
 bindsym $mod+Backspace exec firefox
 bindsym $smod+s        exec grim -g "$(slurp)" \
     $HOME/.media/images/$(date +%F-%H-%M-%S).jpg

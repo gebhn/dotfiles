@@ -1,4 +1,5 @@
 vim.g.mapleader = '\\'
+vim.g.health = { style = 'float' }
 
 vim.opt.filetype = 'on'
 vim.opt.syntax = 'on'
