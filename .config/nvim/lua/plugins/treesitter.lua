@@ -1,6 +1,6 @@
 vim.pack.add {
-    'https://github.com/nvim-treesitter/nvim-treesitter',
-    'https://github.com/nvim-treesitter/nvim-treesitter-textobjects',
+    { src = 'https://github.com/nvim-treesitter/nvim-treesitter', confirm = false },
+    { src = 'https://github.com/nvim-treesitter/nvim-treesitter-textobjects', confirm = false },
 }
 
 local plugin = require 'nvim-treesitter.configs'
@@ -13,6 +13,7 @@ plugin.setup {
         'c',
         'go',
         'lua',
+        'tmux',
         'bash',
         'vimdoc',
         'markdown',
@@ -43,6 +44,7 @@ plugin.setup {
 
 vim.api.nvim_create_autocmd('PackChanged', {
     callback = function(args)
-        if args.data.spec.name == 'nvim-treesitter' and args.data.kind == 'update' then vim.cmd 'TSUpdate' end
+        if not args.data.spec.name == 'nvim-treesitter' then return end
+        if args.data.kind == 'update' then vim.cmd 'TSUpdate' end
     end,
 })

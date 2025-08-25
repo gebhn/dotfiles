@@ -1,5 +1,10 @@
 local augroup = vim.api.nvim_create_augroup('config-autocmds', { clear = true })
 
+vim.api.nvim_create_autocmd('TextYankPost', {
+    group = augroup,
+    callback = function() vim.highlight.on_yank { higroup = 'DiffAdd', timeout = 100 } end,
+})
+
 vim.api.nvim_create_autocmd({ 'InsertLeave', 'WinEnter' }, {
     group = augroup,
     callback = function()

@@ -1,6 +1,6 @@
 vim.pack.add {
-    'https://github.com/williamboman/mason.nvim',
-    'https://github.com/WhoIsSethDaniel/mason-tool-installer.nvim',
+    { src = 'https://github.com/williamboman/mason.nvim', confirm = false },
+    { src = 'https://github.com/WhoIsSethDaniel/mason-tool-installer.nvim', confirm = false },
 }
 
 local plugin = require 'mason'
@@ -29,6 +29,7 @@ installer.setup {
         { 'gofumpt', condition = has_go },
         { 'goimports', condition = has_go },
         { 'staticcheck', condition = has_go },
+        { 'delve', condition = has_go },
         { 'clangd', condition = has_glibc },
         { 'clang-format', condition = has_glibc },
         { 'bash-language-server', condition = has_npm },

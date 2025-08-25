@@ -1,4 +1,4 @@
-font=Iosevka Term:size=13:weight=medium
+font=Iosevka Term:size=15:weight=medium
 format=<b>%a\n\n</b>%s\n%b
 border-size=1
 border-color=#202b31

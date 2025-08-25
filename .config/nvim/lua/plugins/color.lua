@@ -1,6 +1,6 @@
 vim.pack.add {
-    'https://github.com/rktjmp/lush.nvim',
-    'https://github.com/zenbones-theme/zenbones.nvim',
+    { src = 'https://github.com/rktjmp/lush.nvim', confirm = false },
+    { src = 'https://github.com/zenbones-theme/zenbones.nvim', confirm = false },
 }
 
 vim.api.nvim_command 'colorscheme zenbones'
