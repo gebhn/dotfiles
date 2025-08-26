@@ -39,7 +39,11 @@ plugin.setup {
 
 vim.api.nvim_create_autocmd('PackChanged', {
     callback = function(args)
-        if not args.data.spec.name == 'nvim-treesitter' then return end
-        if args.data.kind == 'update' then vim.cmd 'TSUpdate' end
+        if not args.data.spec.name == 'nvim-treesitter' then
+            return
+        end
+        if args.data.kind == 'update' then
+            vim.cmd 'TSUpdate'
+        end
     end,
 })

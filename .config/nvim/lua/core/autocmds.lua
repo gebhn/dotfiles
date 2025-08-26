@@ -2,7 +2,9 @@ local augroup = vim.api.nvim_create_augroup('config-autocmds', { clear = true })
 
 vim.api.nvim_create_autocmd('TextYankPost', {
     group = augroup,
-    callback = function() vim.highlight.on_yank { higroup = 'DiffAdd', timeout = 100 } end,
+    callback = function()
+        vim.highlight.on_yank { higroup = 'DiffAdd', timeout = 100 }
+    end,
 })
 
 vim.api.nvim_create_autocmd({ 'InsertLeave', 'WinEnter' }, {
@@ -30,7 +32,9 @@ vim.api.nvim_create_autocmd({ 'InsertEnter', 'WinLeave' }, {
 vim.api.nvim_create_autocmd({ 'FileType' }, {
     group = augroup,
     pattern = { 'gitcommit' },
-    callback = function() vim.opt_local.textwidth = 50 end,
+    callback = function()
+        vim.opt_local.textwidth = 50
+    end,
 })
 
 vim.api.nvim_create_autocmd({ 'FileType' }, {
@@ -50,5 +54,7 @@ vim.api.nvim_create_autocmd({ 'FileType' }, {
 vim.api.nvim_create_autocmd({ 'FileType' }, {
     group = augroup,
     pattern = { 'c', 'cpp', 'lua', 'go', 'typescript', 'javascript' },
-    callback = function() vim.opt_local.formatoptions:append 'cq' end,
+    callback = function()
+        vim.opt_local.formatoptions:append 'cq'
+    end,
 })

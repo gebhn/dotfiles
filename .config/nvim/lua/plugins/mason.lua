@@ -1,11 +1,17 @@
 local plugin = require 'mason'
 plugin.setup {}
 
-local has = function(cmd) return vim.fn.executable(cmd) == 1 end
+local has = function(cmd)
+    return vim.fn.executable(cmd) == 1
+end
 
-local has_go = function() return has 'go' end
+local has_go = function()
+    return has 'go'
+end
 
-local has_npm = function() return has 'npm' end
+local has_npm = function()
+    return has 'npm'
+end
 
 local has_glibc = function()
     if has 'ldd' then
