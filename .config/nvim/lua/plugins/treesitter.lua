@@ -1,8 +1,3 @@
-vim.pack.add {
-    { src = 'https://github.com/nvim-treesitter/nvim-treesitter', confirm = false },
-    { src = 'https://github.com/nvim-treesitter/nvim-treesitter-textobjects', confirm = false },
-}
-
 local plugin = require 'nvim-treesitter.configs'
 
 plugin.setup {

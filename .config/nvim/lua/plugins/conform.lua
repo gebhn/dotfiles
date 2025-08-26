@@ -1,8 +1,5 @@
-vim.pack.add {
-    { src = 'https://github.com/stevearc/conform.nvim', confirm = false },
-}
-
 local plugin = require 'conform'
+
 plugin.setup {
     notify_on_error = false,
     format_on_save = { lsp_fallback = true, timeout_ms = 500 },

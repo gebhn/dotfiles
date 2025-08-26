@@ -1,8 +1,3 @@
-vim.pack.add {
-    { src = 'https://github.com/williamboman/mason.nvim', confirm = false },
-    { src = 'https://github.com/WhoIsSethDaniel/mason-tool-installer.nvim', confirm = false },
-}
-
 local plugin = require 'mason'
 plugin.setup {}
 

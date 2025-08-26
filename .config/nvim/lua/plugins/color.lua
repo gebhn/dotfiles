@@ -1,8 +1,3 @@
-vim.pack.add {
-    { src = 'https://github.com/rktjmp/lush.nvim', confirm = false },
-    { src = 'https://github.com/zenbones-theme/zenbones.nvim', confirm = false },
-}
-
 vim.api.nvim_command 'colorscheme zenbones'
 vim.o.background = 'light'
 

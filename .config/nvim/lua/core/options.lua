@@ -7,13 +7,13 @@ vim.opt.winborder = 'single'
 vim.opt.cmdheight = 0
 vim.opt.pumheight = 10
 vim.opt.pumwidth = 10
+vim.opt.helpheight = 10
 vim.opt.termguicolors = true
 vim.opt.showmode = false
 vim.opt.ruler = false
-vim.opt.laststatus = 2
+vim.opt.laststatus = 3
 vim.opt.hidden = true
 vim.opt.shortmess:append 'sflmTWAIq'
-vim.loader.enable()
 
 vim.opt.scrolloff = 3
 vim.opt.splitbelow = true
@@ -51,3 +51,11 @@ vim.opt.softtabstop = 4
 vim.opt.smartindent = true
 vim.opt.showmatch = true
 vim.opt.smartcase = true
+
+vim.keymap.set('i', 'jk', '<Esc>', { noremap = true })
+
+vim.api.nvim_create_user_command('W', 'w', { nargs = '*' })
+vim.api.nvim_create_user_command('Wq', 'wq', { nargs = '*' })
+vim.api.nvim_create_user_command('Wq', 'wq!', { bang = true, nargs = '*' })
+vim.api.nvim_create_user_command('Q', 'q', { nargs = '*' })
+vim.api.nvim_create_user_command('Q', 'q!', { bang = true, nargs = '*' })
