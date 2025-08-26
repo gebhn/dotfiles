@@ -39,9 +39,8 @@ vim.api.nvim_create_autocmd('LspAttach', {
         --         table.insert(chars, string.char(i))
         --     end
         --     client.server_capabilities.completionProvider.triggerCharacters = chars
-        -- vim.o.cot = { 'menu', 'menuone', 'noinsert', 'fuzzy', 'popup' }
-        -- vim.o.cia = { 'kind', 'abbr', 'menu' }
-        --     vim.opt.completeopt = { 'menu', 'menuone', 'noselect', 'fuzzy', 'popup' }
+        --     vim.o.cot = 'menu,menuone,noinsert,fuzzy,popup'
+        --     vim.o.cia = 'kind,abbr,menu'
         --     vim.lsp.completion.enable(true, client.id, args.buf, {
         --         autotrigger = true,
         --         convert = function() return { abbr = '', menu = '' } end,

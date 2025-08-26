@@ -15,6 +15,7 @@ vim.opt.laststatus = 3
 vim.opt.hidden = true
 vim.opt.shortmess:append 'sflmTWAIq'
 
+vim.opt.updatetime = 500
 vim.opt.scrolloff = 3
 vim.opt.splitbelow = true
 vim.opt.splitright = true
