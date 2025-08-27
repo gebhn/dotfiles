@@ -8,6 +8,7 @@ vim.pack.add {
     'https://github.com/nvim-treesitter/nvim-treesitter',
     'https://github.com/nvim-treesitter/nvim-treesitter-textobjects',
     'https://github.com/saghen/blink.cmp',
+    'https://github.com/tronikelis/conflict-marker.nvim',
 }
 
 for _, cfg in ipairs {
@@ -17,6 +18,7 @@ for _, cfg in ipairs {
     'conform',
     'treesitter',
     'blink',
+    'conflict',
 } do
     require('plugins.' .. cfg)
 end
