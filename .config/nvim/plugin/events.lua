@@ -1,15 +1,8 @@
-local cmd = vim.api.nvim_create_autocmd
-local g = vim.api.nvim_create_augroup('config-autocmds', { clear = true })
+local autocmd = vim.api.nvim_create_autocmd
+local group = vim.api.nvim_create_augroup('config-autocmds', { clear = true })
 
-cmd('TextYankPost', {
-	group = g,
-	callback = function()
-		vim.highlight.on_yank { higroup = 'Folded', timeout = 100 }
-	end,
-})
-
-cmd('LspAttach', {
-	group = g,
+autocmd('LspAttach', {
+	group = group,
 	callback = function(args)
 		local client = vim.lsp.get_client_by_id(args.data.client_id)
 		if not client then
@@ -42,8 +35,8 @@ cmd('LspAttach', {
 	end,
 })
 
-cmd('CmdlineEnter', {
-	group = g,
+autocmd('CmdlineEnter', {
+	group = group,
 	pattern = ':',
 	callback = function()
 		vim.keymap.set('c', '<C-y>', function()
@@ -58,8 +51,8 @@ cmd('CmdlineEnter', {
 	end,
 })
 
-cmd({ 'CmdlineChanged', 'CmdlineLeave' }, {
-	group = g,
+autocmd({ 'CmdlineChanged', 'CmdlineLeave' }, {
+	group = group,
 	pattern = { '*' },
 	callback = function(args)
 		local cmdline_cmd = vim.fn.split(vim.fn.getcmdline(), ' ')[1]
@@ -80,16 +73,16 @@ cmd({ 'CmdlineChanged', 'CmdlineLeave' }, {
 	end,
 })
 
-cmd({ 'FileType' }, {
-	group = g,
+autocmd({ 'FileType' }, {
+	group = group,
 	pattern = { 'gitcommit' },
 	callback = function()
 		vim.opt_local.textwidth = 50
 	end,
 })
 
-cmd({ 'FileType' }, {
-	group = g,
+autocmd({ 'FileType' }, {
+	group = group,
 	pattern = { 'text', 'gitcommit' },
 	callback = function(args)
 		vim.opt_local.formatoptions:append 'tq'
@@ -99,5 +92,11 @@ cmd({ 'FileType' }, {
 		vim.keymap.set('n', 'fne', ']s', { buffer = args.buf })
 		vim.keymap.set('n', 'fpe', '[s', { buffer = args.buf })
 		vim.keymap.set({ 'n', 'v' }, 'gra', 'z=', { buffer = args.buf })
+	end,
+})
+
+autocmd('FileType', {
+	callback = function()
+		pcall(vim.treesitter.start)
 	end,
 })
