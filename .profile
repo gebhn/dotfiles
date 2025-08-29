@@ -17,6 +17,7 @@ export ENV=~/.ashrc
 export PATH=$PATH:$HOME/.turso
 export PATH=$PATH:$HOME/.cargo/bin
 export PATH=$PATH:$HOME/.local/go/bin
+export PATH=$PATH:$HOME/.pkg/lua-language-server/bin
 
 for dir in "$XDG_RUNTIME_DIR" "$GOPATH"; do
     mkdir -pm 0700 "$dir"

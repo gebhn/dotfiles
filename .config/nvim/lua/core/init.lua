@@ -1,3 +1,2 @@
-require 'core.autocmds'
-require 'core.options'
-require 'core.lsp'
+require 'core.keys'
+require 'core.opts'

@@ -3,4 +3,4 @@ no_call_parentheses = true
 line_endings = "Unix"
 column_width = 120
 indent_width = 4
-indent_type = "Spaces"
+indent_type = "Tabs"

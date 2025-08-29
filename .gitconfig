@@ -22,4 +22,19 @@
     cmd = nvim -d $LOCAL $REMOTE
 
 [merge]
-    tool = nvimdiff
+    tool          = nvimdiff
+    conflictStyle = zdiff3
+
+[core]
+    pager = delta
+
+[interactive]
+    diffFilter = delta --color-only
+
+[delta]
+    side-by-side = true
+    navigate     = true
+    light        = true
+
+[alias]
+    pr = "!f() { git fetch upstream pull/$1/head:pr-$1 && git checkout pr-$1; }; f"
