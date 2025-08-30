@@ -69,15 +69,8 @@ autocmd({ 'CmdlineChanged', 'CmdlineLeave' }, {
 
 		if args.event == 'CmdlineLeave' then
 			vim.o.wildmode = 'full'
+			_G.current_fnames = _G.all_fnames
 		end
-	end,
-})
-
-autocmd({ 'FileType' }, {
-	group = group,
-	pattern = { 'gitcommit' },
-	callback = function()
-		vim.opt_local.textwidth = 50
 	end,
 })
 
@@ -85,6 +78,9 @@ autocmd({ 'FileType' }, {
 	group = group,
 	pattern = { 'text', 'gitcommit' },
 	callback = function(args)
+		if args.match == 'gitcommit' then
+			vim.opt_local.textwidth = 50
+		end
 		vim.opt_local.formatoptions:append 'tq'
 		vim.opt_local.wrap = true
 		vim.opt_local.spell = true
