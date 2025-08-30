@@ -24,6 +24,7 @@ vim.o.tabstop = 4
 vim.o.softtabstop = 4
 
 -- ui
+vim.o.background = 'light'
 vim.o.winborder = 'single'
 vim.o.number = true
 vim.o.cursorline = true

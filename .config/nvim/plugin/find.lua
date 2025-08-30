@@ -1,10 +1,8 @@
-local cmd = 'rg --files --hidden --no-ignore --color=never --glob="!.git"'
+All = All or vim.fn.systemlist('rg --files --hidden --no-ignore --color=never --glob="!.git"')
+Current = All
 
-_G.all_fnames = _G.all_fnames or vim.fn.systemlist(cmd)
-_G.current_fnames = _G.all_fnames
-
-_G.RgFindFiles = function(arglead, _)
-	local base = _G.current_fnames or _G.all_fnames or {}
+RgFindFiles = function(arglead, _)
+	local base = Current or All or {}
 	if #arglead == 0 then
 		return base
 	else
@@ -14,7 +12,7 @@ end
 
 vim.o.findfunc = 'v:lua.RgFindFiles'
 
-local refine = function()
+Refine = function()
 	if vim.fn.getcmdtype() ~= ':' then
 		return ''
 	end
@@ -26,10 +24,10 @@ local refine = function()
 	end
 
 	if #arg > 0 then
-		local base = _G.current_fnames or _G.all_fnames
+		local base = Current or All
 		local narrowed = vim.fn.matchfuzzy(base, arg)
 		if #narrowed > 0 then
-			_G.current_fnames = narrowed
+			Current = narrowed
 		end
 	end
 
@@ -37,5 +35,3 @@ local refine = function()
 
 	return vim.fn.nr2char(vim.o.wildchar)
 end
-
-vim.keymap.set('c', '<C-f>', refine, { expr = true })

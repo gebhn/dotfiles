@@ -1,16 +1,16 @@
-local cmd = 'rg --vimgrep --color=never --hidden --glob="!.git" '
-
-_G.RgGrep = function(cmdarg, _)
+RgGrep = function(cmdarg, _)
 	if #cmdarg == 0 then
 		return {}
 	end
 
-	local res = vim.fn.systemlist(cmd .. vim.fn.shellescape(cmdarg))
+	local res = vim.fn.systemlist(
+		'rg --vimgrep --color=never --hidden --glob="!.git" '
+		.. vim.fn.shellescape(cmdarg)
+	)
 
 	for i, line in ipairs(res) do
 		res[i] = line:gsub(':(%d+):%d+:', ':%1:')
 	end
-
 	return res
 end
 
