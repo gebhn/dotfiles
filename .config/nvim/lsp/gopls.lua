@@ -76,10 +76,6 @@ return {
 		get_std_lib_dir()
 		on_dir(get_root_dir(fname))
 	end,
-	on_attach = function()
-		vim.o.list = false
-		vim.o.makeprg = 'go run %'
-	end,
 	settings = {
 		gopls = {
 			analyses = {

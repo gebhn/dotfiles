@@ -1,11 +1,12 @@
-vim.keymap.set('i', 'jk', '<Esc>', { desc = 'normal mode, normal keymap' })
+vim.keymap.set('i', 'jk', '<Esc>')
 
-vim.keymap.set('c', '<C-f>', Refine, { desc = 'refine find results', expr = true })
+vim.keymap.set('c', '<C-f>', _G.Refine)
+vim.keymap.set('c', '<C-y>', '<CR>')
 
-vim.keymap.set('n', 'ff', ':find ', { desc = 'search for files' })
-vim.keymap.set('n', 'fg', ':Grep ', { desc = 'search in files' })
-vim.keymap.set('n', 'fae', ':Fix<CR>', { desc = 'lsp diagnostics to qflist' })
-vim.keymap.set('n', '<leader>nf', ':e %:h/', { desc = 'create a new adjacent file' })
+vim.keymap.set('n', 'ff', ':find ')
+vim.keymap.set('n', 'fg', ':Grep ')
+vim.keymap.set('n', 'fae', ':Fix<CR>')
+vim.keymap.set('n', '<leader>nf', ':e %:h/')
 
 vim.api.nvim_create_user_command('W', 'w', { nargs = '*' })
 vim.api.nvim_create_user_command('Wq', 'wq', { nargs = '*' })
