@@ -7,7 +7,7 @@ set $darkmodebg #17181a
 output eDP-1 {
    adaptive_sync off
    pos 0,0
-   bg $darkmodebg solid_color
+   bg $lightmodebg solid_color
 }
 
 input type:keyboard {
@@ -23,7 +23,7 @@ input type:pointer {
 set $mod  Mod4
 set $alt  Mod1
 set $smod $mod+shift
-set $col  $darkmode
+set $col  $lightmode
 
 floating_modifier $mod normal
 
