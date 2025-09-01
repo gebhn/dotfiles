@@ -42,7 +42,7 @@ local function symbol_info(bufnr, client)
 end
 
 return {
-	cmd = { 'clangd' },
+	cmd = { 'clangd', '--function-arg-placeholders=false' },
 	filetypes = { 'c', 'cpp', 'objc', 'objcpp', 'cuda' },
 	root_markers = {
 		'.clangd',

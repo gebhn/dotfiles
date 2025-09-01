@@ -1,26 +1,27 @@
-RgGrep = function(cmdarg, _)
-	if #cmdarg == 0 then
-		return {}
+local cmd = 'git grep -n '
+
+local git_grep = function(cmdarg, _)
+	if #cmdarg == 0 then return {} end
+
+	local base = vim.split(vim.trim(io.popen(cmd .. cmdarg):read('*a')), '\n')
+	local found = {}
+
+	for _, line in ipairs(base) do
+		local fmt = line:gsub(':(%d+):%d+:', ':%1:')
+		table.insert(found, fmt)
 	end
 
-	local res = vim.fn.systemlist(
-		'rg --vimgrep --color=never --hidden --glob="!.git" '
-		.. vim.fn.shellescape(cmdarg)
-	)
-
-	for i, line in ipairs(res) do
-		res[i] = line:gsub(':(%d+):%d+:', ':%1:')
-	end
-	return res
+	return found
 end
 
-vim.o.completefunc = 'v:lua.RgGrep'
+local command = function(opts)
+	local file, lnum = opts.args:match '([^:]+):(%d+):'
 
-vim.api.nvim_create_user_command('Grep', function(opts)
-	local item = opts.args
-	local filename, lnum = item:match '([^:]+):(%d+):'
-	if filename and lnum then
-		vim.cmd('edit ' .. filename)
-		vim.fn.cursor(lnum, 1)
-	end
-end, { nargs = '*', complete = 'customlist,v:lua.RgGrep' })
+	vim.cmd.edit { args = { file } }
+	vim.fn.cursor(lnum, 1)
+end
+
+vim.api.nvim_create_user_command('Grep', command, {
+	complete = git_grep,
+	nargs = '*',
+})
