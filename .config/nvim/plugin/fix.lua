@@ -10,7 +10,15 @@ local function qflist_diagnostics()
 		return
 	end
 
-	vim.diagnostic.setqflist()
+	vim.diagnostic.setqflist {
+		format = function(diag)
+			if #diag.message > 70 then
+				return diag.message:sub(1, 70 - 3) .. '...'
+			end
+			return diag.message
+		end
+	}
+
 	vim.cmd.copen()
 end
 

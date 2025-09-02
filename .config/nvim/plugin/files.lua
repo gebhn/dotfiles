@@ -23,7 +23,7 @@ local command = function(opts)
 	end
 end
 
-vim.api.nvim_create_user_command('Pick', command, {
+vim.api.nvim_create_user_command('Files', command, {
 	complete = git_files,
 	nargs = '*',
 })
