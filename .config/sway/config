@@ -19,7 +19,6 @@ input type:pointer {
 set $mod  Mod4
 set $alt  Mod1
 set $smod $mod+shift
-set $col  $lightmode
 
 floating_modifier $mod normal
 
