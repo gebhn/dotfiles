@@ -8,7 +8,7 @@ vim.o.undofile = true
 
 -- completion
 vim.o.pumheight = 10
-vim.o.completeopt = 'menu,menuone,noselect,noinsert,fuzzy,popup'
+vim.opt.completeopt:append { 'menuone', 'noselect', 'noinsert', 'fuzzy', }
 
 -- status/cmd
 vim.o.cmdheight = 0

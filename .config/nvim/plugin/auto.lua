@@ -96,17 +96,26 @@ vim.api.nvim_create_autocmd('CmdlineLeave', {
 	end
 })
 
+vim.api.nvim_create_autocmd('QuickFixCmdPost', {
+	pattern = 'make',
+	callback = function()
+		if not vim.tbl_isempty(vim.fn.getqflist()) then
+			vim.cmd.copen()
+		end
+	end
+})
+
 vim.api.nvim_create_autocmd('CmdlineChanged', {
 	group = group,
 	callback = function()
-		local cmd = vim.fn.split(vim.fn.getcmdline(), ' ')[1]
+		local cmd = vim.fn.getcmdline():match('^%S+')
 
-		local is = function(c)
-			return vim.fn.index(vim.fn.getcompletion(c, 'cmdline'), cmd) >= 0
+		local is = function(name)
+			return vim.tbl_contains(vim.fn.getcompletion(name, 'cmdline'), cmd)
 		end
 
 		if is 'help' or is 'Files' or is 'Grep' then
-			vim.o.wildmode = 'noselect,full'
+			vim.opt.wildmode = 'noselect,full'
 			vim.fn.wildtrigger()
 		end
 	end,

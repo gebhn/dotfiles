@@ -27,6 +27,10 @@ still be listed here.
 * Sway   [https://github.com/swaywm/sway]
 * Tmux   [https://github.com/tmux/tmux]
 
+Additionally for treesitter support in Neovim you'll need to have parsers
+installed, the default configuration provides queries but the libs must be
+installed at /usr/lib/tree-sitter/*.so
+
 [002] Services
 ________________________________________________________________________________
 
