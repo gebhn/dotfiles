@@ -1,9 +1,8 @@
 -- https://elanmed.dev/blog/native-fzf-in-neovim
 
-
 local colors = table.concat({
 	"--color=",
-	"bg:-1,bg+:-1,",
+	"bg:black,bg+:black,",
 	"fg:white,fg:regular,fg+:white,fg+:regular,",
 	"hl:white,hl:bold,hl+:white,hl+:reverse,",
 	"prompt:-1,pointer:-1,info:-1"
@@ -21,8 +20,8 @@ local fzf = function(opts)
 		height = math.floor(vim.o.lines / 3),
 	})
 
-	local cmd =
-		string.format("%s | fzf %s > %s", opts.source, table.concat(opts.options or {}, " "), tmp)
+	local str = table.concat(opts.options or {}, ' ')
+	local cmd = string.format("%s | fzf %s > %s", opts.source, str, tmp)
 
 	local on_exit = function()
 		vim.api.nvim_win_close(winnr, true)
@@ -50,5 +49,23 @@ vim.api.nvim_create_user_command("Files", function()
 			colors,
 		},
 		sink = vim.cmd.edit,
+	}
+end, {})
+
+vim.api.nvim_create_user_command("Grep", function()
+	fzf {
+		source = "rg --line-number --no-heading --color=never .",
+		options = {
+			"--cycle",
+			"--bind 'ctrl-y:accept'",
+			colors,
+		},
+		sink = function(selected)
+			local file, lnum = string.match(selected, "^([^:]+):(%d+)")
+			if file and lnum then
+				vim.cmd.edit(file)
+				vim.fn.cursor(lnum, 1)
+			end
+		end
 	}
 end, {})
