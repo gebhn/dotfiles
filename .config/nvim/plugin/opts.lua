@@ -27,8 +27,8 @@ vim.o.softtabstop = 4
 -- ui
 vim.o.background = 'light'
 vim.o.winborder = 'single'
+vim.o.signcolumn = 'number'
 vim.o.number = true
 vim.o.cursorline = true
-vim.o.signcolumn = 'number'
 vim.opt.shortmess:append 'sflmTWAIq'
 vim.opt.fillchars:append { eob = ' ' }
