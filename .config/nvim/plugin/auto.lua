@@ -52,10 +52,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
 		vim.keymap.set('n', 'gpe', prev_diagnostic, { buffer = args.buf })
 		vim.keymap.set('n', 'gae', all_diagnostic, { buffer = args.buf })
 
-		if client:supports_method('textDocument/completion') then
-			client.server_capabilities.completionProvider.triggerCharacters =
-				vim.tbl_map(string.char, vim.fn.range(32, 126))
-
+		if client:supports_method 'textDocument/completion' then
 			vim.lsp.completion.enable(true, client.id, args.buf, {
 				autotrigger = true,
 				convert = function(item)
@@ -65,7 +62,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
 			})
 		end
 
-		if client:supports_method('textDocument/formatting') then
+		if client:supports_method 'textDocument/formatting' then
 			vim.api.nvim_create_autocmd('BufWritePre', {
 				buffer = args.buf,
 				callback = function()
@@ -73,13 +70,13 @@ vim.api.nvim_create_autocmd('LspAttach', {
 				end,
 			})
 		end
-	end
+	end,
 })
 
 vim.api.nvim_create_autocmd('CmdlineChanged', {
 	group = group,
 	callback = function()
-		local cmd = vim.fn.getcmdline():match('^%S+')
+		local cmd = vim.fn.getcmdline():match '^%S+'
 
 		local is = function(name)
 			return vim.tbl_contains(vim.fn.getcompletion(name, 'cmdline'), cmd)
@@ -94,10 +91,14 @@ vim.api.nvim_create_autocmd('CmdlineChanged', {
 
 vim.api.nvim_create_autocmd('CmdlineLeave', {
 	group = group,
-	callback = function() vim.o.wildmode = 'full' end
+	callback = function()
+		vim.o.wildmode = 'full'
+	end,
 })
 
 vim.api.nvim_create_autocmd('FileType', {
 	group = group,
-	callback = function() pcall(vim.treesitter.start) end
+	callback = function()
+		pcall(vim.treesitter.start)
+	end,
 })
