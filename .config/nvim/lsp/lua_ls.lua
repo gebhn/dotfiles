@@ -27,7 +27,7 @@ return {
 			workspace = {
 				checkThirdParty = false,
 				library = vim.tbl_filter(function(d)
-					return not d:match(vim.fn.stdpath 'config' .. '/?a?f?t?e?r?')
+					return not d:match(vim.fn.stdpath 'config' .. '/after')
 				end, vim.api.nvim_get_runtime_file('', true)),
 			},
 		},

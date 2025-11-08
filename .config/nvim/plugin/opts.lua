@@ -1,5 +1,6 @@
 -- core
-vim.o.updatetime = 200
+vim.o.updatetime = 300
+vim.o.timeoutlen = 300
 
 -- buffers
 vim.o.hidden = true
@@ -9,6 +10,7 @@ vim.o.undofile = true
 -- completion
 vim.o.pumheight = 10
 vim.opt.completeopt:append { 'menuone', 'noselect', 'noinsert', 'fuzzy', }
+vim.o.wildmode = 'noselect,full'
 
 -- status/cmd
 vim.o.cmdheight = 0

@@ -1,4 +1,5 @@
 vim.keymap.set('i', 'jk', '<ESC>')
-vim.keymap.set('c', '<C-y>', '<CR>')
-vim.keymap.set('n', 'ff', ':Files<CR>')
-vim.keymap.set('n', 'fs', ':Grep<CR>')
+vim.keymap.set('n', 'ff', ':silent! find ')
+vim.keymap.set('n', 'fs', ':silent! grep ')
+vim.keymap.set('n', 'qo', ':copen<CR>')
+vim.keymap.set('n', 'qc', ':cclose<CR>')

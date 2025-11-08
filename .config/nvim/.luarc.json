@@ -1,0 +1,8 @@
+{
+  "format": {
+    "defaultConfig": {
+      "max_line_length": "100",
+      "quote_style": "single"
+    }
+  }
+}
