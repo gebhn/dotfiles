@@ -1,5 +1,10 @@
 export ENV=~/.ashrc
 
+[ -z "$SSH_AGENT_PID" ] && {
+	eval "$(ssh-agent -s)"
+    ssh-add ~/.ssh/id_ed25519 2>/dev/null
+}
+
 [ -z "$XDG_RUNTIME_DIR" ] && {
     export XDG_RUNTIME_DIR="/tmp/$(id -u)/runtime"
 }
