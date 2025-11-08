@@ -67,6 +67,24 @@ vim.api.nvim_create_autocmd('LspAttach', {
 	end,
 })
 
+vim.api.nvim_create_autocmd('CmdlineChanged', {
+	group = group,
+	callback = function()
+		local cmd = vim.fn.getcmdline():match('^%S+')
+		if not vim.tbl_contains({ 'w', 'wq', 'x', 'x!', 'q', 'q!' }, cmd) then
+			vim.fn.wildtrigger()
+		end
+	end,
+})
+
+vim.api.nvim_create_autocmd('QuickFixCmdPost', {
+	group = group,
+	pattern = { 'grep' },
+	callback = function()
+		vim.cmd.copen()
+	end
+})
+
 vim.api.nvim_create_autocmd('FileType', {
 	group = group,
 	callback = function()

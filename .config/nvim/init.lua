@@ -1,4 +1,4 @@
-vim.lsp.enable { 'gopls', 'clangd', 'lua_ls' }
+vim.lsp.enable { 'clangd', 'gopls', 'lua_ls' }
 
 vim.pack.add {
 	{ src = 'https://github.com/rktjmp/lush.nvim',             name = 'lush' },
