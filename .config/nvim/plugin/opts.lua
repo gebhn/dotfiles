@@ -10,7 +10,6 @@ vim.o.undofile = true
 -- completion
 vim.o.pumheight = 10
 vim.opt.completeopt:append { 'menuone', 'noselect', 'noinsert', 'fuzzy', }
-vim.o.wildmode = 'noselect,full'
 
 -- status/cmd
 vim.o.cmdheight = 0
@@ -25,6 +24,9 @@ vim.o.splitbelow = true
 vim.o.shiftwidth = 4
 vim.o.tabstop = 4
 vim.o.softtabstop = 4
+
+-- find
+vim.o.wildmode = 'noselect,full'
 
 -- ui
 vim.o.background = 'light'

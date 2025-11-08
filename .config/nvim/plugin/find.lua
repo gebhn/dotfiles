@@ -1,21 +1,5 @@
-local function scan_dir(path, result)
-	result = result or {}
-	for _, name in ipairs(vim.fn.readdir(path)) do
-		local full = path .. '/' .. name
-		if vim.fn.isdirectory(full) == 1 then
-			if name ~= '.git' then
-				scan_dir(full, result)
-			end
-		else
-			table.insert(result, full)
-		end
-	end
-	return result
-end
-
 function _G.Find(cmdarg, _)
-	local files = scan_dir(vim.fn.getcwd())
-
+	local files = vim.fn.globpath('.', '**/*', false, true)
 	if #cmdarg == 0 then
 		return files
 	else
