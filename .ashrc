@@ -9,9 +9,6 @@ export CXXFLAGS="$CFLAGS"
 export MAKEFLAGS="-j$(nproc)"
 export DOCKER_HOST="unix://$XDG_RUNTIME_DIR/docker.sock"
 
-runt() {
-    tmux send-keys -t "$1" "$2" C-m
-}
 mksh() {
     printf '#!/bin/sh\n' > "$1" && chmod +x "$1";
 }
@@ -23,10 +20,6 @@ pb() {
 }
 gs() {
     git status;
-}
-gd() {
-    git diff -u "$@" | sed \
-      "s/^-/$(printf "\x1b")[31m-/;s/^+/$(printf "\x1b")[32m+/;s/^@/$(printf "\x1b")[34m@/;s/$/$(printf "\x1b")[0m/"
 }
 ..() {
     cd ../;

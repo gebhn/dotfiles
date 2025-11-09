@@ -14,13 +14,17 @@ export ENV=~/.ashrc
     echo "GOPATH=$GOPATH" >> "$HOME"/.local/go/env
 }
 
+[ -z "$CARGO_HOME" ] && {
+	export CARGO_HOME="$HOME/.local/cargo"
+}
+
 [ -z "$GOBIN" ] && {
     export GOBIN="$GOPATH/bin"
     echo "GOBIN=$GOBIN" >> "$HOME"/.local/go/env
 }
 
 export PATH=$PATH:$HOME/.turso
-export PATH=$PATH:$HOME/.cargo/bin
+export PATH=$PATH:$HOME/.local/cargo/bin
 export PATH=$PATH:$HOME/.local/node/bin
 export PATH=$PATH:$HOME/.local/go/bin
 export PATH=$PATH:$HOME/.pkg/lua-language-server/bin
