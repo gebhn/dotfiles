@@ -7,6 +7,7 @@
 !.ashrc
 !.gitconfig
 !.profile
+!.npmrc
 
 !.config/
 !.config/foot/

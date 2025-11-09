@@ -21,6 +21,7 @@ export ENV=~/.ashrc
 
 export PATH=$PATH:$HOME/.turso
 export PATH=$PATH:$HOME/.cargo/bin
+export PATH=$PATH:$HOME/.local/node/bin
 export PATH=$PATH:$HOME/.local/go/bin
 export PATH=$PATH:$HOME/.pkg/lua-language-server/bin
 
