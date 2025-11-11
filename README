@@ -31,6 +31,17 @@ Additionally for treesitter support in Neovim you'll need to have parsers
 installed, the default configuration provides queries but the libs must be
 installed at /usr/lib/tree-sitter/*.so
 
+Go specifically prefers gofumpt over gofmt, as well as staticcheck and includes
+an additional ftplugin for goimports. You may wish to install these and ensure
+they're in your PATH.
+
+Lastly, Neovim requires a few standalone binaries for language server support
+and formatting:
+
+* Lua language server [https://github.com/LuaLS/lua-language-server]
+* Go language server  [https://github.com/golang/tools/tree/master/gopls]
+* C language server   [https://github.com/clangd/clangd]
+
 [002] Services
 ________________________________________________________________________________
 

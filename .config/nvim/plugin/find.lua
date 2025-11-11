@@ -1,6 +1,4 @@
-function _G.Find(cmdarg, _)
+function _G.Find(arg, _)
 	local files = vim.fn.globpath('.', '**/*', false, true)
-	return #cmdarg == 0 and files or vim.fn.matchfuzzy(files, cmdarg)
+	return #arg == 0 and files or vim.fn.matchfuzzy(files, arg)
 end
-
-vim.o.findfunc = 'v:lua.Find'

@@ -9,13 +9,13 @@ export ENV=~/.ashrc
     export XDG_RUNTIME_DIR="/tmp/$(id -u)/runtime"
 }
 
+[ -z "$CARGO_HOME" ] && {
+	export CARGO_HOME="$HOME/.local/cargo"
+}
+
 [ -z "$GOPATH" ] && {
     export GOPATH="$HOME/.local/go"
     echo "GOPATH=$GOPATH" >> "$HOME"/.local/go/env
-}
-
-[ -z "$CARGO_HOME" ] && {
-	export CARGO_HOME="$HOME/.local/cargo"
 }
 
 [ -z "$GOBIN" ] && {
@@ -26,8 +26,8 @@ export ENV=~/.ashrc
 export PATH=$PATH:$HOME/.turso
 export PATH=$PATH:$HOME/.local/cargo/bin
 export PATH=$PATH:$HOME/.local/node/bin
+export PATH=$PATH:$HOME/.local/lua/bin
 export PATH=$PATH:$HOME/.local/go/bin
-export PATH=$PATH:$HOME/.pkg/lua-language-server/bin
 
 for dir in "$XDG_RUNTIME_DIR" "$GOPATH" "$CARGO_HOME"; do
     mkdir -pm 0700 "$dir"

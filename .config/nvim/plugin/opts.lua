@@ -25,9 +25,6 @@ vim.o.shiftwidth = 4
 vim.o.tabstop = 4
 vim.o.softtabstop = 4
 
--- find
-vim.o.wildmode = 'noselect,full'
-
 -- ui
 vim.o.background = 'light'
 vim.o.winborder = 'single'
@@ -37,3 +34,7 @@ vim.o.number = true
 vim.o.cursorline = true
 vim.opt.shortmess:append 'sflmTWAIq'
 vim.opt.fillchars:append { eob = ' ' }
+
+-- find
+vim.o.wildmode = 'noselect,full'
+vim.o.findfunc = 'v:lua.Find'
