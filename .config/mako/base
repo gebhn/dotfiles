@@ -1,5 +1,0 @@
-font=Iosevka Term:size=15:weight=medium
-sort=-time
-default-timeout=5000
-format=<b>%a\n\n</b>%s\n%b
-border-size=1
