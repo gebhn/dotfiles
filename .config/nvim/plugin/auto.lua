@@ -79,7 +79,7 @@ vim.api.nvim_create_autocmd('CmdlineChanged', {
 
 vim.api.nvim_create_autocmd('QuickFixCmdPost', {
 	group = group,
-	pattern = { 'grep' },
+	pattern = { 'grep', 'make' },
 	callback = function()
 		vim.cmd.copen()
 	end
