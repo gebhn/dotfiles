@@ -19,11 +19,11 @@ local hover = function()
 	vim.diagnostic.open_float { focusable = false, focus = false }
 end
 
-local next = function()
+local nextd = function()
 	vim.diagnostic.jump { count = 1, float = true }
 end
 
-local prev = function()
+local prevd = function()
 	vim.diagnostic.jump { count = -1, float = true }
 end
 
@@ -38,8 +38,8 @@ vim.api.nvim_create_autocmd('LspAttach', {
 		vim.api.nvim_create_autocmd('DiagnosticChanged', { callback = fix })
 
 		vim.keymap.set('n', 'grd', vim.lsp.buf.definition, { buffer = args.buf })
-		vim.keymap.set('n', 'gne', next, { buffer = args.buf })
-		vim.keymap.set('n', 'gpe', prev, { buffer = args.buf })
+		vim.keymap.set('n', 'gne', nextd, { buffer = args.buf })
+		vim.keymap.set('n', 'gpe', prevd, { buffer = args.buf })
 		vim.keymap.set('n', 'gae', open, { buffer = args.buf })
 
 		if client:supports_method 'textDocument/completion' then
@@ -56,11 +56,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
 			vim.api.nvim_create_autocmd('BufWritePre', {
 				buffer = args.buf,
 				callback = function()
-					vim.lsp.buf.format {
-						bufnr = args.buf,
-						id = client.id,
-						timeout_ms = 500,
-					}
+					vim.lsp.buf.format { bufnr = args.buf, id = client.id }
 				end,
 			})
 		end
