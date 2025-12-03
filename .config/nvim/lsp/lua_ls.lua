@@ -1,7 +1,3 @@
-local path = vim.split(package.path, ';')
-table.insert(path, 'lua/?.lua')
-table.insert(path, 'lua/?/init.lua')
-
 return {
 	cmd = { 'lua-language-server' },
 	filetypes = { 'lua' },
@@ -17,18 +13,8 @@ return {
 	},
 	settings = {
 		Lua = {
-			runtime = {
-				version = 'LuaJIT',
-				path = path,
-			},
-			diagnostics = {
-				globals = { 'vim' },
-			},
 			workspace = {
-				checkThirdParty = false,
-				library = vim.tbl_filter(function(d)
-					return not d:match(vim.fn.stdpath 'config' .. '/after')
-				end, vim.api.nvim_get_runtime_file('', true)),
+				library = vim.api.nvim_get_runtime_file('', true)
 			},
 		},
 	},

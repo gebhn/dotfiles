@@ -27,6 +27,7 @@ export PATH=$PATH:$HOME/.turso
 export PATH=$PATH:$HOME/.local/cargo/bin
 export PATH=$PATH:$HOME/.local/node/bin
 export PATH=$PATH:$HOME/.local/lua/bin
+export PATH=$PATH:$HOME/.local/zig/bin
 export PATH=$PATH:$HOME/.local/go/bin
 
 for dir in "$XDG_RUNTIME_DIR" "$GOPATH" "$CARGO_HOME"; do
