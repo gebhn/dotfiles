@@ -6,3 +6,7 @@ vim.api.nvim_set_hl(0, 'SnippetTabstopActive', { bg = 'NONE', ctermbg = 'NONE' }
 vim.api.nvim_set_hl(0, 'PmenuBorder', { bg = 'NONE' })
 vim.api.nvim_set_hl(0, 'Pmenu', { bg = 'NONE' })
 vim.api.nvim_set_hl(0, 'NormalFloat', { bg = 'NONE' })
+
+vim.api.nvim_set_hl(0, '@diff.plus', { link = 'DiffAdd' })
+vim.api.nvim_set_hl(0, '@diff.minus', { link = 'DiffDelete' })
+vim.api.nvim_set_hl(0, '@diff.delta', { link = 'DiffChange' })
