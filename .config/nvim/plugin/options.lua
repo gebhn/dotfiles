@@ -38,8 +38,3 @@ vim.opt.fillchars:append { eob = ' ' }
 -- find
 vim.o.wildmode = 'noselect,full'
 vim.o.findfunc = 'v:lua.Find'
-
-function _G.Find(arg, _)
-	local files = vim.fn.globpath('.', '**/*', false, true)
-	return #arg == 0 and files or vim.fn.matchfuzzy(files, arg)
-end
