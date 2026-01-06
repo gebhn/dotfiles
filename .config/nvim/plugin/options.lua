@@ -1,3 +1,6 @@
+-- lsp
+vim.lsp.enable { 'clangd', 'gopls', 'lua_ls', 'tsgo', 'zls' }
+
 -- core
 vim.o.updatetime = 300
 vim.o.timeoutlen = 300
@@ -10,6 +13,10 @@ vim.o.undofile = true
 -- completion
 vim.o.pumheight = 10
 vim.opt.completeopt:append { 'menuone', 'noselect', 'fuzzy', }
+
+-- find
+vim.o.wildmode = 'noselect,full'
+vim.o.findfunc = 'v:lua.Find'
 
 -- status/cmd
 vim.o.cmdheight = 0
@@ -34,7 +41,3 @@ vim.o.number = true
 vim.o.cursorline = true
 vim.opt.shortmess:append 'sflmTWAIq'
 vim.opt.fillchars:append { eob = ' ' }
-
--- find
-vim.o.wildmode = 'noselect,full'
-vim.o.findfunc = 'v:lua.Find'
