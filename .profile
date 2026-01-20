@@ -23,7 +23,6 @@ export ENV=~/.ashrc
     echo "GOBIN=$GOBIN" >> "$HOME"/.local/go/env
 }
 
-export PATH=$PATH:$HOME/.turso
 export PATH=$PATH:$HOME/.local/cargo/bin
 export PATH=$PATH:$HOME/.local/node/bin
 export PATH=$PATH:$HOME/.local/lua/bin
