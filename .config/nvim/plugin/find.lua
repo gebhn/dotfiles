@@ -1,38 +1,24 @@
-local cache, cached = {}, true
+vim.pack.add {
+	{ src = 'https://github.com/nvim-mini/mini.nvim', name = 'mini' }
+}
 
-function _G.Find(cmdarg, _)
-	if #cmdarg == 0 then
-		if not cached then
-			return
-		end
+local e = require 'mini.extra'
+local p = require 'mini.pick'
 
-		cached = false
-		cache = {}
-
-		local names = function(_, path)
-			if path:match('%.git') then
-				return false
-			end
-			return true
-		end
-
-		local opts = {
-			limit = math.huge,
-			type = 'file',
-			path = vim.fn.getcwd(),
+e.setup {}
+p.setup {
+	mappings = {
+		choose = '<C-y>'
+	},
+	window = {
+		config = {
+			anchor = 'NW',
+			height = math.floor(vim.o.lines * 0.3),
+			width = vim.o.columns,
 		}
+	}
+}
 
-		cache = vim.fs.find(names, opts)
-
-		vim.api.nvim_create_autocmd('CmdlineLeave', {
-			once = true,
-			callback = function()
-				cached = true
-			end,
-		})
-
-		return cache
-	else
-		return vim.fn.matchfuzzy(cache, cmdarg, { matchseq = 1, limit = 100 })
-	end
-end
+vim.keymap.set('n', '<leader>fd', e.pickers.diagnostic, { noremap = true })
+vim.keymap.set('n', '<leader>ff', p.builtin.files, { noremap = true })
+vim.keymap.set('n', '<leader>fs', p.builtin.grep_live, { noremap = true })
