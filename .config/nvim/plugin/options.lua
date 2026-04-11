@@ -44,11 +44,3 @@ vim.o.number = true
 vim.o.cursorline = true
 vim.opt.shortmess:append 'sflmTWAIq'
 vim.opt.fillchars:append { eob = ' ' }
-
--- ui2
-require('vim._core.ui2').enable({
-	enable = true,
-	msg = {
-		targets = 'cmd',
-	},
-})
