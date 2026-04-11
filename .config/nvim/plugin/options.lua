@@ -1,5 +1,11 @@
+local d = vim.fn.globpath(vim.fn.stdpath 'config' .. '/lsp', '*.lua', true, true)
+
+local servers = vim.iter(d):map(function(p)
+	return vim.fn.fnamemodify(p, ':t:r')
+end)
+
 -- lsp
-vim.lsp.enable { 'clangd', 'gopls', 'lua_ls', 'tsgo', 'zls' }
+vim.lsp.enable(servers:totable())
 
 -- core
 vim.o.updatetime = 300
@@ -14,14 +20,11 @@ vim.o.undofile = true
 vim.o.pumheight = 10
 vim.opt.completeopt:append { 'menuone', 'noselect', 'fuzzy', }
 
--- find
-vim.o.wildmode = 'noselect,full'
-vim.o.findfunc = 'v:lua.Find'
-
 -- status/cmd
 vim.o.cmdheight = 0
 vim.o.laststatus = 3
 vim.o.statusline = ' '
+vim.o.wildmode = 'noselect,full'
 
 -- help/splits
 vim.o.helpheight = 10
@@ -41,3 +44,11 @@ vim.o.number = true
 vim.o.cursorline = true
 vim.opt.shortmess:append 'sflmTWAIq'
 vim.opt.fillchars:append { eob = ' ' }
+
+-- ui2
+require('vim._core.ui2').enable({
+	enable = true,
+	msg = {
+		targets = 'cmd',
+	},
+})

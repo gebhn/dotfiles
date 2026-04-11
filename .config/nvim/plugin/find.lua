@@ -19,6 +19,6 @@ p.setup {
 	}
 }
 
-vim.keymap.set('n', '<leader>fd', e.pickers.diagnostic, { noremap = true })
 vim.keymap.set('n', '<leader>ff', p.builtin.files, { noremap = true })
 vim.keymap.set('n', '<leader>fs', p.builtin.grep_live, { noremap = true })
+vim.keymap.set('n', '<leader>fd', e.pickers.diagnostic, { noremap = true })
